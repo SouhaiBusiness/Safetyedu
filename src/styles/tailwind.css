@@ -1,0 +1,313 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Primary Colors - Soft Blue from NARSA logo */
+    --color-primary: 74 111 165; /* Soft blue #4A6FA5 */
+    --color-primary-foreground: 255 255 255; /* white */
+    
+    /* Background Colors - Very light blue tint */
+    --color-background: 248 250 253; /* Very light blue-gray */
+    --color-foreground: 30 41 59; /* Slate-800 */
+    
+    /* Card Colors */
+    --color-card: 255 255 255; /* white */
+    --color-card-foreground: 30 41 59; /* Slate-800 */
+    
+    /* Popover Colors */
+    --color-popover: 255 255 255; /* white */
+    --color-popover-foreground: 30 41 59; /* Slate-800 */
+    
+    /* Secondary Colors - Soft Yellow from NARSA logo */
+    --color-secondary: 232 216 95; /* Soft yellow #E8D85F */
+    --color-secondary-foreground: 71 85 105; /* Slate-600 for contrast */
+    
+    /* Muted Colors - Light blue-gray */
+    --color-muted: 241 245 249; /* Slate-100 */
+    --color-muted-foreground: 100 116 139; /* Slate-500 */
+    
+    /* Accent Colors - Bright soft yellow */
+    --color-accent: 250 230 100; /* Lighter yellow #FAE664 */
+    --color-accent-foreground: 71 85 105; /* Slate-600 */
+    
+    /* Destructive/Error Colors */
+    --color-destructive: 239 68 68; /* red-500 - softer red */
+    --color-destructive-foreground: 255 255 255; /* white */
+    --color-error: 239 68 68; /* red-500 */
+    --color-error-foreground: 255 255 255; /* white */
+    
+    /* Success Colors - Soft teal-blue */
+    --color-success: 20 184 166; /* teal-500 */
+    --color-success-foreground: 255 255 255; /* white */
+    
+    /* Warning Colors - Soft yellow */
+    --color-warning: 250 204 21; /* yellow-400 */
+    --color-warning-foreground: 71 85 105; /* Slate-600 */
+    
+    /* Border & Input - Light blue-gray */
+    --color-border: 226 232 240; /* Slate-200 */
+    --color-input: 248 250 252; /* Slate-50 */
+    --color-ring: 74 111 165; /* Soft blue matching primary */
+    
+    /* Border Radius */
+    --radius-sm: 0.5rem; /* 8px */
+    --radius-md: 1rem; /* 16px */
+    --radius-lg: 2rem; /* 32px */
+    --radius-xl: 3rem; /* 48px */
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+@layer components {
+  /* Hero Typography */
+  .hero-title {
+    font-size: clamp(3rem, 8vw, 7rem);
+    line-height: 0.9;
+    letter-spacing: -0.02em;
+    font-weight: 800;
+    text-transform: uppercase;
+  }
+  
+  /* Section Headers */
+  .section-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-weight: 700;
+    color: rgb(var(--color-primary));
+  }
+  
+  /* Creative Cards */
+  .creative-card {
+    background: rgb(var(--color-card));
+    border-radius: var(--radius-lg);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgb(var(--color-border));
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .creative-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 40px 80px -20px rgba(46, 125, 50, 0.15);
+    border-color: rgba(46, 125, 50, 0.3);
+  }
+  
+  /* Button Styles */
+  .btn-primary {
+    background: rgb(var(--color-primary));
+    color: rgb(var(--color-primary-foreground));
+    padding: 1rem 2rem;
+    border-radius: 9999px;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .btn-primary:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 30px rgba(46, 125, 50, 0.3);
+  }
+  
+  .btn-secondary {
+    background: transparent;
+    color: rgb(var(--color-primary));
+    border: 2px solid rgb(var(--color-primary));
+    padding: 1rem 2rem;
+    border-radius: 9999px;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .btn-secondary:hover {
+    background: rgb(var(--color-primary));
+    color: rgb(var(--color-primary-foreground));
+    transform: scale(1.05);
+  }
+  
+  /* Stat Badge */
+  .stat-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 9999px;
+    background: rgb(var(--color-accent));
+    color: rgb(var(--color-accent-foreground));
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+  }
+  
+  /* Floating Card */
+  .floating-card {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+  }
+  
+  .floating-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* Image Overlay */
+  .image-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.2), transparent);
+  }
+  
+  /* Gradient Background */
+  .gradient-bg {
+    background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 50%, #fff9e6 100%);
+  }
+  
+  /* Age Badge */
+  .age-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  
+  .age-badge-preschool {
+    background: #fef3c7; /* yellow-100 */
+    color: #92400e; /* yellow-900 */
+  }
+  
+  .age-badge-primary {
+    background: #dbeafe; /* blue-100 */
+    color: #1e3a8a; /* blue-900 */
+  }
+  
+  .age-badge-secondary {
+    background: #e0e7ff; /* indigo-100 */
+    color: #312e81; /* indigo-900 */
+  }
+  
+  .age-badge-university {
+    background: #f3e8ff; /* purple-100 */
+    color: #581c87; /* purple-900 */
+  }
+}
+
+@layer utilities {
+  /* Text Stroke Effect */
+  .text-stroke {
+    -webkit-text-stroke: 1px rgb(var(--color-primary));
+    -webkit-text-fill-color: transparent;
+  }
+  
+  /* Grayscale Hover */
+  .grayscale-hover {
+    filter: grayscale(100%);
+    transition: filter 0.7s ease;
+  }
+  
+  .grayscale-hover:hover {
+    filter: grayscale(0%);
+  }
+  
+  /* Backdrop Blur */
+  .backdrop-blur-custom {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+  
+  /* Fade In Animation */
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+/* Animations */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Floating animation for stat cards */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+.animate-float:nth-child(2) {
+  animation-delay: 0.5s;
+}
+
+.animate-float:nth-child(3) {
+  animation-delay: 1s;
+}
+
+.floating-card {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  padding: 1rem 1.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
